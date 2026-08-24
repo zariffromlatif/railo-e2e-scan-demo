@@ -43,3 +43,5 @@ if __name__ == "__main__":
 app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+
+# trigger: re-scan probe
