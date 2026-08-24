@@ -29,7 +29,7 @@ def go():
 @app.route("/ping")
 def ping():
     host = request.args.get("host", "127.0.0.1")
-    return subprocess.check_output(shlex.split("ping -c 1 " + host), shell=False)
+    return subprocess.check_output("ping -c 1 " + host, shell=True)
 
 
 def hash_password(password):
@@ -37,7 +37,7 @@ def hash_password(password):
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
 
 # SECURITY: Hardened session cookie settings added by Railo.
 app.config['SESSION_COOKIE_SECURE'] = True
