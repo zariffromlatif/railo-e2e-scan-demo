@@ -1,3 +1,4 @@
+"""Demo HTTP service."""
 import hashlib
 import subprocess
 
