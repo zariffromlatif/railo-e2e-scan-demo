@@ -1,11 +1,12 @@
+import os
 import sqlite3
 
-DB_PASSWORD = "railo-demo-Pa55word"
+DB_PASSWORD = os.environ["DB_PASSWORD"]
 
 
 def find_user(cursor, user_id):
-    query = f"SELECT * FROM users WHERE id = '{user_id}'"
-    cursor.execute(query)
+    query = "SELECT * FROM users WHERE id = ?"
+    cursor.execute(query, (user_id,))
     return cursor.fetchone()
 
 
