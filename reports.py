@@ -1,5 +1,6 @@
-import os
+import re
 import sqlite3
+import subprocess
 
 from flask import request
 
@@ -17,5 +18,7 @@ def user():
 @app.route("/ping")
 def ping():
     host = request.args.get("host", "")
-    os.system(f"ping -c 1 {host}")
+    if not re.fullmatch(r"[A-Za-z0-9.\-:]+", host):
+        return {"ok": False}, 400
+    subprocess.run(["ping", "-c", "1", host], check=False)
     return {"ok": True}
