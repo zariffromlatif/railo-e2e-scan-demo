@@ -10,7 +10,7 @@ from app import app
 def user():
     user_id = request.args.get("id", "")
     conn = sqlite3.connect("users.db")
-    row = conn.execute(f"SELECT name FROM users WHERE id = '{user_id}'").fetchone()
+    row = conn.execute("SELECT name FROM users WHERE id = ?", (user_id,)).fetchone()
     return {"name": row[0] if row else None}
 
 
